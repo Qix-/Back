@@ -11,6 +11,13 @@ LIBI += -Ilib/leveldb/include
 LIBF += -lleveldb
 LIBL += -Llib/leveldb
 
+LIBF += -lstdc++
+ifneq ($(TUP_PLATFORM),win32)
+LIBF += -pthread
+# Comment out the below. levelDB thinks it's being smart; it's not helping.
+LIBF += -lsnappy
+endif
+
 DEFS += -DWITH_COLOR 
 DEFS += -DWITH_TIMER
 
@@ -19,4 +26,4 @@ DEFS += -DWITH_TIMER
 
 !c = |> gcc -std=c11 -Wall -Wextra -pedantic $(DEFS) $(LIBI) -g -O0 -c %f -o %o |>
 : foreach src/*.c src/arch/@(TUP_PLATFORM)/*.c |> !c |> build/%B.o {obj}
-: {obj} | $(LIBS) |> gcc $(LIBL) $(LIBF) -o %o %f |> back
+: {obj} | $(LIBS) |> gcc $(LIBL) -o %o %f $(LIBF) |> back
