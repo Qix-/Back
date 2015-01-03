@@ -33,6 +33,7 @@ back_db* back_db_open(void) {
 
   char* err = 0;
   db->ldb = leveldb_open(options, dbname, &err);
+  leveldb_options_destroy(options);
   if (err) {
     BACK_ERRF("could not open database: %s", err);
     leveldb_free(err);
