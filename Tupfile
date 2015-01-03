@@ -1,5 +1,6 @@
 # Back bootstrap builder
 
+LIBI += -Isrc
 
 LIBS += lib/lua/src/liblua.a
 LIBI += -Ilib/lua/src
