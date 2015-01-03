@@ -9,6 +9,6 @@ LIBL += -Llib/lua/src
 # a nice little "hack"
 : |> mkdir -p src/arch/@(TUP_PLATFORM) &>/dev/null; echo "/.gitignore" > src/arch/@(TUP_PLATFORM)/.gitignore |> | src/arch/@(TUP_PLATFORM)/.gitignore
 
-!c = |> gcc -std=c11 -Wall -Wextra -pedantic $(LIBI) -g -O0 -c %f -o %o |>
+!c = |> gcc -std=c11 -Wall -Wextra -pedantic $(LIBI) -DWITH_COLOR -g -O0 -c %f -o %o |>
 : foreach src/*.c src/arch/@(TUP_PLATFORM)/*.c |> !c |> build/%B.o {obj}
 : {obj} | $(LIBS) |> gcc $(LIBS) $(LIBF) -o %o %f |> back
