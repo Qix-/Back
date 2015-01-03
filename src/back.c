@@ -20,23 +20,37 @@ int main(int argc, char** argv) {
     argv = &argv[2];
   }
 
+  int result = -1;
+#ifdef WITH_TIMER
+  long long time_start = back__clock();
+#endif
+
   // Determine subcommand and forward execution
   if (strcmp(subcommand, "up") == 0) {
-    return back_up(argc, argv);
+    result = back_up(argc, argv);
   } else if(strcmp(subcommand, "bone") == 0) {
-    return back_bone(argc, argv);
+    result = back_bone(argc, argv);
   } else if(strcmp(subcommand, "list") == 0) {
-    return back_list(argc, argv);
+    result = back_list(argc, argv);
   } else if(strcmp(subcommand, "pack") == 0) {
-    return back_pack(argc, argv);
+    result = back_pack(argc, argv);
   } else if(strcmp(subcommand, "wash") == 0) {
-    return back_wash(argc, argv);
+    result = back_wash(argc, argv);
   } else if(strcmp(subcommand, "spin") == 0) {
-    return back_spin(argc, argv);
+    result = back_spin(argc, argv);
   } else if(strcmp(subcommand, "track") == 0) {
-    return back_track(argc, argv);
+    result = back_track(argc, argv);
   } else {
     BACK_ERRF("unknown subcommand '%s'", subcommand);
-    return -1;
+    result = -1;
   }
+
+#ifdef WITH_TIMER
+  if (result == 0) {
+    long long time_delta = back__clock() - time_start;
+    BACK_LOGF("completed in %.02f seconds", back__clock_secs(time_delta));
+  }
+#endif
+
+  return result;
 }

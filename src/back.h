@@ -39,4 +39,9 @@ int back_wash(int, char**);
 int back_spin(int, char**);
 int back_track(int, char**);
 
+#ifdef WITH_TIMER
+long long back__clock(void);
+double back__clock_secs(long long);
+#endif
+
 #endif
