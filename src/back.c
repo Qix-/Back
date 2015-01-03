@@ -48,7 +48,9 @@ int main(int argc, char** argv) {
 #ifdef WITH_TIMER
   if (result == 0) {
     long long time_delta = back__clock() - time_start;
-    BACK_LOGF("completed in %.02f seconds", back__clock_secs(time_delta));
+    printf("\n");
+    BACK_LOGF("completed successfully in %.02f seconds",
+        back__clock_secs(time_delta));
   }
 #endif
 
