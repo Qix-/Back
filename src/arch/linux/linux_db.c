@@ -22,10 +22,13 @@ char* back_db_find(char* dbname) {
     return 0;
   }
 
+  // Iterate up the path until we find one
   char pathbuf[CWDSIZE];
   while (1) {
     char* dbpath = strcpy(&pathbuf[0], cwd);
 
+    // Only append a slash if we're not in root
+    //  (since dirname and getcwd both leave off the slash)
     char inroot = strcmp(cwd, "/") == 0;
     if (!inroot) {
       dbpath = strcat(dbpath, "/");
@@ -33,6 +36,7 @@ char* back_db_find(char* dbname) {
 
     dbpath = strcat(dbpath, dbname);
 
+    // Try to open the directory
     DIR* dir = opendir(dbpath);
     if (dir) {
       closedir(dir);
