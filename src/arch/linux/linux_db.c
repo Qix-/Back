@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include "back.h"
+#include "str.h"
 
 static const size_t CWDSIZE = 2048;
 
