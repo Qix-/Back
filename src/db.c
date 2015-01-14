@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <libgen.h>
 #include <leveldb/c.h>
 #include "back.h"
 #include "db.h"
@@ -20,6 +21,9 @@ back_db* back_db_open(void) {
   if (dbname == 0) {
     BACK_LOG("initializing database in " BACK_DB_DIR);
     dbname = strdup(BACK_DB_DIR);
+  } else {
+    char* basename = dirname(dbname);
+    BACK_LOGF("based in %s", basename);
   }
 
   back_db* db = malloc(sizeof(back_db));

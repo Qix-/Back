@@ -7,6 +7,10 @@
 #include <ctype.h>
 #include "back.h"
 
+#define CHECK_CMD(name) (strcmp(subcommand, #name) == 0) {                      \
+  result = back_##name(argc, argv);                                             \
+}
+
 int main(int argc, char** argv) {
   // Resolve subcommand
   char* subcommand = "up";
@@ -26,21 +30,14 @@ int main(int argc, char** argv) {
 #endif
 
   // Determine subcommand and forward execution
-  if (strcmp(subcommand, "up") == 0) {
-    result = back_up(argc, argv);
-  } else if(strcmp(subcommand, "bone") == 0) {
-    result = back_bone(argc, argv);
-  } else if(strcmp(subcommand, "list") == 0) {
-    result = back_list(argc, argv);
-  } else if(strcmp(subcommand, "pack") == 0) {
-    result = back_pack(argc, argv);
-  } else if(strcmp(subcommand, "wash") == 0) {
-    result = back_wash(argc, argv);
-  } else if(strcmp(subcommand, "spin") == 0) {
-    result = back_spin(argc, argv);
-  } else if(strcmp(subcommand, "track") == 0) {
-    result = back_track(argc, argv);
-  } else {
+  if      CHECK_CMD(up)
+  else if CHECK_CMD(bone)
+  else if CHECK_CMD(list)
+  else if CHECK_CMD(pack)
+  else if CHECK_CMD(wash)
+  else if CHECK_CMD(spin)
+  else if CHECK_CMD(track)
+  else {
     BACK_ERRF("unknown subcommand '%s'", subcommand);
     result = -1;
   }
