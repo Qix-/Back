@@ -22,8 +22,10 @@ back_db* back_db_open(void) {
     BACK_LOG("initializing database in " BACK_DB_DIR);
     dbname = strdup(BACK_DB_DIR);
   } else {
-    char* basename = dirname(dbname);
+    char* basename = strdup(dbname);
+    dirname(basename);
     BACK_LOGF("based in %s", basename);
+    free(basename);
   }
 
   back_db* db = malloc(sizeof(back_db));
