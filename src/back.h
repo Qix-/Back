@@ -2,6 +2,8 @@
 #define BACK_H__
 #pragma once
 
+#define BACK_VERSION "0.1.0"
+
 #ifdef WITH_COLOR
 # define BACK_COLOR "\x1b[36;1m"
 # define BACK_COLOR_RESET "\x1b[0m"
@@ -38,6 +40,7 @@ int back_pack(int, char**);
 int back_wash(int, char**);
 int back_spin(int, char**);
 int back_track(int, char**);
+int back_stamp(int, char**);
 
 #ifdef WITH_TIMER
 long long back_clock(void);

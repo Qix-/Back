@@ -37,6 +37,7 @@ int main(int argc, char** argv) {
   else if CHECK_CMD(wash)
   else if CHECK_CMD(spin)
   else if CHECK_CMD(track)
+  else if CHECK_CMD(stamp)
   else {
     BACK_ERRF("unknown subcommand '%s'", subcommand);
     result = -1;
