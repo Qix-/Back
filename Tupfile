@@ -14,7 +14,7 @@ LIBL += -Llib/leveldb
 
 LIBF += -lstdc++
 ifneq ($(TUP_PLATFORM),win32)
-#LIBF += -pthread
+LIBF += -pthread
 # Comment out the below if necessary.
 # levelDB thinks it's being smart; it's not helping.
 LIBF += -lsnappy
@@ -22,6 +22,9 @@ endif
 
 DEFS += -DWITH_COLOR 
 DEFS += -DWITH_TIMER
+ifeq ($(TUP_PLATFORM),win32)
+DEFS += -DWIN32_LEAN_AND_MEAN
+endif
 
 # a nice little "hack"
 : |> mkdir -p src/arch/@(TUP_PLATFORM) &>/dev/null; echo "/.gitignore" > src/arch/@(TUP_PLATFORM)/.gitignore |> | src/arch/@(TUP_PLATFORM)/.gitignore
