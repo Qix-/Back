@@ -13,6 +13,8 @@ LIBF += -lleveldb
 LIBL += -Llib/leveldb
 
 LIBF += -lstdc++
+LIBF += -lc
+LIBF += -lm
 ifneq ($(TUP_PLATFORM),win32)
 LIBF += -pthread
 # Comment out the below if necessary.
