@@ -14,7 +14,7 @@ LIBL += -Llib/leveldb
 
 LIBF += -lstdc++
 ifneq ($(TUP_PLATFORM),win32)
-LIBF += -pthread
+#LIBF += -pthread
 # Comment out the below if necessary.
 # levelDB thinks it's being smart; it's not helping.
 LIBF += -lsnappy
