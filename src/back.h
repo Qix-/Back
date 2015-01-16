@@ -18,9 +18,9 @@
 #define BACK_ERRF(fmt, ...) fprintf(stderr,                                     \
     BACK_COLOR "[BACK] " BACK_COLOR_RESET                                       \
     BACK_COLOR_ERR "error" BACK_COLOR_RESET ": " fmt "\n",                      \
-    ##__VA_ARGS__)
+    __VA_ARGS__)
 #define BACK_LOGF(fmt, ...) printf(BACK_COLOR "[BACK] " BACK_COLOR_RESET        \
-    fmt "\n", ##__VA_ARGS__)
+    fmt "\n", __VA_ARGS__)
 
 #ifdef UNUSED
 # error "UNUSED is already defined."

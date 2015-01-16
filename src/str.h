@@ -3,7 +3,7 @@
 #pragma once
 
 /* Duplicates a string (be sure to free) */
-char* strdup(char*);
+char* strdup(const char*);
 
 /* Ensures a free-able dirname'd/basename'd string
    without modifying the original string */
