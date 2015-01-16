@@ -4,10 +4,10 @@
 
 #include <time.h>
 
-long long back__clock(void) {
+long long back_clock(void) {
   return (long long) clock();
 }
 
-double back__clock_secs(long long delta) {
+double back_clock_secs(long long delta) {
   return delta / CLOCKS_PER_SEC;
 }

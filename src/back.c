@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
 
   int result = -1;
 #ifdef WITH_TIMER
-  long long time_start = back__clock();
+  long long time_start = back_clock();
 #endif
 
   // Determine subcommand and forward execution
@@ -44,9 +44,9 @@ int main(int argc, char** argv) {
 
 #ifdef WITH_TIMER
   if (result == 0) {
-    long long time_delta = back__clock() - time_start;
+    long long time_delta = back_clock() - time_start;
     BACK_LOGF("completed successfully in %.02f seconds",
-        back__clock_secs(time_delta));
+        back_clock_secs(time_delta));
   }
 #endif
 
