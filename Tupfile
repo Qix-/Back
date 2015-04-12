@@ -12,14 +12,16 @@ LIBI += -Ilib/leveldb/include
 LIBF += -lleveldb
 LIBL += -Llib/leveldb
 
+LIBS += lib/snappy/bin/libsnappy.a
+LIBI += -Ilib/snappy
+LIBF += -lsnappy
+LIBL += -Llib/snappy/bin
+
 LIBF += -lstdc++
 LIBF += -lc
 LIBF += -lm
 ifneq ($(TUP_PLATFORM),win32)
 LIBF += -pthread
-# Comment out the below if necessary.
-# levelDB thinks it's being smart; it's not helping.
-LIBF += -lsnappy
 endif
 
 DEFS += -DWITH_COLOR 

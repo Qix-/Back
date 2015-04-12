@@ -1,6 +1,12 @@
 [submodule "lib/lua"]
 	path = lib/lua
 	url = https://github.com/lua/lua.git
+	ignore = dirty
 [submodule "lib/leveldb"]
 	path = lib/leveldb
 	url = https://github.com/google/leveldb.git
+	ignore = dirty
+[submodule "lib/snappy"]
+	path = lib/snappy
+	url = https://github.com/google/snappy.git
+	ignore = dirty
