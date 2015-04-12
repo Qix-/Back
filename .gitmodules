@@ -1,6 +1,6 @@
 [submodule "lib/lua"]
 	path = lib/lua
-	url = git@github.com:lua/lua.git
+	url = https://github.com/lua/lua.git
 [submodule "lib/leveldb"]
 	path = lib/leveldb
-	url = git@github.com:google/leveldb.git
+	url = https://github.com/google/leveldb.git
