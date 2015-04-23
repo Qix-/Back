@@ -24,6 +24,27 @@ When configuring Back, you map these inputs and outputs together to form
 build chains. When invoking Back, you may designate specific inputs or reroute
 outputs.
 
+# Building
+Building is done through a bootstrap script and the use of `tup`.
+
+## Prerequisites
+There are a few tools needed in order to bootstrap successfully:
+
+- **Ubuntu**: `sudo apt-get install libtool autogen`
+
+As well, make sure `/usr/bin/sed` points to a binary of `sed` - not sure why
+Snappy (the most problematic library in Back) requires this.
+
+You will also need [Tup](http://gittup.org/tup).
+
+## Building
+Simply bootstrap and build:
+
+1. `./boostrap -f`
+2. `tup init && tup`
+
+If all goes as planned, `back` should be smugly sitting in your project root.
+
 # License
 Back is licensed under the MIT License.
 

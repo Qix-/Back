@@ -14,6 +14,9 @@ make --directory=lib/lua $_clean generic \
   || die "Building lua failed!"
 
 # Make snappy
+if [ ! -z "$_clean" ] && [ -f "lib/snappy/Makefile" ]; then
+  rm lib/snappy/Makefile
+fi
 if [ ! -f lib/snappy/Makefile ]; then
   (cd lib/snappy && ./autogen.sh && ./configure) \
     || die "Configuring Snappy failed!"
